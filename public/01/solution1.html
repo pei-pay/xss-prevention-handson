@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>XSS Test Page</title>
+  </head>
+  <body>
+    <h1>XSS Test Page</h1>
+    <div id="result"></div>
+    <a id="link" href="#">click link</a>
+
+    <script>
+      const url = new URL(location.href);
+      const message = url.searchParams.get("message");
+      if(message != null) {
+        // DANGER: XSS
+        // document.querySelector('#result').innerHTML = message;
+
+
+        // NOTE: Modify to treat strings as text nodes
+        const textNode = document.createTextNode(message);
+        document.querySelector("#result").appendChild(textNode)
+      }
+    </script>
+  </body>
+</html>
