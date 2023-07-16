@@ -17,7 +17,7 @@
       }
       const url = new URL(location.href);
       const message = url.searchParams.get("message");
-      if(message != null
+      if(message != null) {
         document.querySelector('#result').innerHTML = escapeHTML(message);
       }
     </script>
