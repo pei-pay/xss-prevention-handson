@@ -8,7 +8,11 @@ app.get(
   serveStatic({
     root: './public',
     rewriteRequestPath: (path) => {
-      return path.concat('.html');
+      if (path === '/') {
+        return path.replace('/', '/index.html');
+      } else {
+        return path.concat('.html');
+      }
     },
   })
 );
