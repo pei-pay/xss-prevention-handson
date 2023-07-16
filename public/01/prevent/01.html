@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>XSS Test Page</title>
+  </head>
+  <body>
+    <h1>XSS Test Page</h1>
+    <div id="result"></div>
+
+    <script>
+      const escapeHTML = (str) => {
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#27;")
+      }
+      const url = new URL(location.href);
+      const message = url.searchParams.get("message");
+      if(message != null) {
+        document.querySelector('#result').innerHTML = escapeHTML(message);
+      }
+    </script>
+  </body>
+</html>
