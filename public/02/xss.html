@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>XSS Test Page</title>
+  </head>
+  <body>
+    <h1>XSS Test Page</h1>
+    <a id="link" href="#">click link</a>
+
+    <script>
+      const url = new URL(location.href);
+      const urlStr = url.searchParams.get("url");
+      if(urlStr !== null) {
+        const linkUrl = new URL(urlStr, url.origin);
+        document.querySelector("#link").href = linkUrl;
+      }
+    </script>
+  </body>
+</html>
