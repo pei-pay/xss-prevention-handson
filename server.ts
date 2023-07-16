@@ -7,13 +7,13 @@ app.get(
   '/*',
   serveStatic({
     root: './public',
-    rewriteRequestPath: (path) => {
-      if (path === '/') {
-        return path.replace('/', '/index.html');
-      } else {
-        return path.concat('.html');
-      }
-    },
+    // rewriteRequestPath: (path) => {
+    //   if (path === '/') {
+    //     return path.replace('/', '/index.html');
+    //   } else {
+    //     return path.concat('.html');
+    //   }
+    // },
   })
 );
 
