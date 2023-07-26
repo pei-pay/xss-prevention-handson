@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>XSS Test Page</title>
+  </head>
+  <body>
+    <h1>XSS Test Page</h1>
+    <input id="search" type="text" value=aaa>
+
+    <script>
+      const url = new URL(location.href);
+      const keyword = url.searchParams.get("keyword");
+      if(keyword !== null) {
+        document.querySelector('#search').setAttribute('value', keyword)
+        // document.querySelector('#search').setAttribute('value', keyword)
+      }
+    </script>
+  </body>
+</html>
